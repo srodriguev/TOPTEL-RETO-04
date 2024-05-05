@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+spec:
+  tls:
+  - hosts:
+    - reto4.srodriguev.space # Replace with your cluster DNS name
+    secretName: reto4.srodriguev.space-tls-secret
+  rules:
+  - host: reto4.srodriguev.space # Replace with your cluster DNS name
+    http:
+      paths:
+      - backend:
+          service:
+            name: wordpress-lb
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix 

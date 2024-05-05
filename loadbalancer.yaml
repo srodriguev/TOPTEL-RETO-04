@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-lb
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "false"  # Si deseas un balanceador de carga interno
+    # service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "subnet-id"  # Si necesitas especificar una subred interna
+spec:
+  type: LoadBalancer
+  selector:
+    app: wordpress
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+
