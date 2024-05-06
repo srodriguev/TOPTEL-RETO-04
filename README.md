@@ -35,6 +35,13 @@ Para correr el proyecto bajamos:
 - Cliente de certbot
 
 
+La primera versión del despliegue se realizó con Google Cloud, sin embargo por el tamaño del proyecto pedian una cuota extra de almacenamiento 3 veces superior a la gratuita, y aunque pasé mucho tiempo tratando de optimizar el proyecto no se pudo correr en esa plataforma y no pude acceder a la expansión de almacenamiento.
+
+Luego consideré usar minikube y correrlo local, sin embargo queria poder usar el dominio que tengo comprado, asi que probé nuevamente en AWS, pero la configuración allí es muy confusa y puede ser abrumador.
+
+Por último opté por desplegarlo en Azure Cloud, ya que aunque no tengo créditos estudiantiles en esta plataforma tiene la interfaz de kubernetes mas amigable entre las opciones vistas, y aqui si pude solicitar exitosamente la ampliacion de almacenamiento y procesamiento para correr el proyecto correctamente. 
+
+
 # DESPLIEGUE
 
 Se deben usra varios archivos de configuración con diversas funcionalidades.
@@ -95,6 +102,12 @@ kubectl create secret tls reto4.srodriguev.space-tls-secret --cert=/Users/makata
 
 
 # CONCLUSIONES
+
+- Deberian aumentar la capcidad de los proyectos gratuitos de Kubernetes para poder probar sus capacidades a totalidad, con el rango gratuito se pueden probar aplicaciones muy pequeñas como el proyecto guestbook que es un tutorial de kubernetes creado por ibm con una app muy sencilla y un redis, pero al tratar de meterle un service de mysql ya se superaba la cuota con creces.
+
+- Se pudo evidenciar lo facil que es escalar el numero de replicas en kubernetes sin tener tiempos de downtime significativos
+
+- Se pudo evidenciar el gran espectro de personalización de kubernetes para un amplio rango de proyectos, sin embargo tambien se denota que tal como se abren las posibilidades de despliegue tambien, si no se es experto en el tema, hay muchas formas de equivocarse. 
 
 
 # REFERENCIAS
